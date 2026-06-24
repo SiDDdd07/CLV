@@ -1,84 +1,201 @@
-# Customer Lifetime Value (CLV) Forecasting
+# Customer Lifetime Value Prediction & Segmentation
 
-This project forecasts **Customer Lifetime Value (CLV)** using both **probabilistic modeling** and **machine learning**, providing insights into customer behavior, revenue forecasting, and strategic segmentation.
-
----
-
-## 📌 Project Overview
-
-Customer Lifetime Value (CLV) helps businesses understand how much revenue they can expect from customers over time.  
-This notebook explores two approaches:
-
-1. **Probabilistic Model (Lifetimes Library)**  
-   - Uses customer transaction history to model repeat purchases and churn.  
-   - Great for long-term strategic planning.  
-
-2. **Machine Learning Model (XGBoost)**  
-   - Predicts spend more accurately using transaction-level features.  
-   - Best for short-term tactical forecasting.  
+Predicting customer lifetime value (CLV) is essential for understanding which customers contribute the most value and where businesses should focus their retention efforts. This project predicts 6-month customer lifetime value and segments customers into actionable groups to support marketing, retention, and revenue optimization decisions.
 
 ---
 
-## 🔑 Key Insights
+## Problem Statement
 
-### 1. Revenue Forecast
-- Predicted **£4.5M revenue** over the next **6 months**.  
-- Top 10 customers expected to generate between **£36k–£129k** each.
+Businesses often spend the same amount of effort on all customers, even though not every customer contributes equally to revenue.
 
-### 2. Customer Segmentation
-- **Top-Tier (25%)**: ~£2,349 average CLV (6 months).  
-- **Mid-Tier (50%)**: ~£327 average CLV.  
-- **Low-Tier (25%)**: ~£82 average CLV.  
+The objective of this project was to:
 
-### 3. Profiling High-Value Customers
-- **Geography**: Majority located in the **United Kingdom**.  
-- **Product Preferences**:  
-  - Low-value customers buy widely.  
-  - High-value customers prefer **specific, higher-margin categories** (e.g., *Regency Cake Stand*).  
+- Predict future customer lifetime value (CLV).
+- Identify high-value and at-risk customers.
+- Segment customers into actionable groups.
+- Recommend strategies to improve retention and maximize revenue.
 
 ---
 
-## 📊 Model Comparison
+## Dataset
 
-| Model              | RMSE   | MAE  | Best For |
-|--------------------|--------|------|----------|
-| Lifetimes (BG/NBD) | ~3182  | ~434 | Strategic CLV estimation |
-| XGBoost            | ~2640  | ~364 | Short-term financial forecasting |
+- **Customers:** 5,800+
+- **Transactions:** 800,000+
+- Historical purchase and behavioral data
 
-- **XGBoost** → More accurate for predicting short-term spend.  
-- **Lifetimes** → Better at long-term value estimation and ranking customers.  
+### Features Used
 
----
-
-## 🚀 Strategic Recommendations
-- **Targeted Marketing**: Focus campaigns on mid-tier UK customers to push them into top-tier.  
-- **Product Promotion**: Double down on high-margin categories favored by top-tier buyers.  
-- **Forecasting**: Use XGBoost for **short-term budgeting**, Lifetimes for **long-term strategy**.  
+- Recency
+- Frequency
+- Monetary Value
+- Average Order Value
+- Purchase History
+- Customer Behavior Metrics
 
 ---
 
-## 🛠️ Tech Stack
-- **Python**
-- **lifetimes** (BG/NBD + Gamma-Gamma models)
-- **XGBoost**
-- **pandas, numpy, matplotlib, seaborn**
-- **Jupyter Notebook**
+## Project Workflow
+
+### 1. Data Cleaning & Preprocessing
+
+- Removed missing values and duplicates.
+- Handled outliers.
+- Performed feature engineering.
+- Prepared the dataset for modeling.
+
+---
+
+### 2. Exploratory Data Analysis
+
+Analyzed:
+
+- Purchase frequency distribution
+- Revenue contribution patterns
+- Customer spending behavior
+- RFM characteristics
+
+Key observation:
+
+> A small percentage of customers contributed a disproportionately large share of revenue, indicating the need for differentiated retention strategies.
+
+---
+
+### 3. Customer Segmentation
+
+Customers were segmented into groups based on their purchasing behavior:
+
+### High Value Customers
+- Frequent purchases
+- High spending
+- Strong retention potential
+
+### Medium Value Customers
+- Moderate purchase frequency
+- Opportunity for upselling
+
+### Low Value Customers
+- Infrequent purchases
+- High churn risk
+
+### At-Risk Customers
+- Previously active customers with declining engagement
+
+---
+
+## Model Development
+
+Several regression models were evaluated for predicting 6-month Customer Lifetime Value.
+
+Models explored:
+
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting Regressor
+
+Performance was compared using:
+
+- MAE
+- RMSE
+- R² Score
+
+The best-performing model was selected based on prediction accuracy and generalization capability.
+
+---
+
+## Key Insights
+
+### 1. Revenue Concentration
+
+The top customer segment generated a majority of overall revenue.
+
+**Business implication:**
+Protecting and retaining these customers should be a priority.
+
+---
+
+### 2. Churn Risk Segment
+
+A group of customers showed declining activity despite previous purchases.
+
+**Business implication:**
+Targeted retention campaigns can prevent revenue loss.
+
+---
+
+### 3. Medium Value Customers
+
+Many customers had growth potential.
+
+**Business implication:**
+Personalized recommendations and cross-selling can increase their lifetime value.
+
+---
+
+## Recommended Strategies
+
+### High Value Customers
+
+- Loyalty rewards
+- Exclusive offers
+- Premium experiences
+
+### Medium Value Customers
+
+- Product recommendations
+- Bundling strategies
+- Cross-selling campaigns
+
+### At-Risk Customers
+
+- Re-engagement emails
+- Personalized discounts
+- Win-back campaigns
+
+### Low Value Customers
+
+- Low-cost automated campaigns
+- Behavioral nudges
+
+---
+
+## Business Impact
+
+This framework can help businesses:
+
+- Improve customer retention.
+- Optimize marketing spend.
+- Increase customer lifetime value.
+- Identify high-value users.
+- Prioritize customer acquisition efforts.
+- Enable data-driven decision making.
+
+---
+
+## Tech Stack
+
+- Python
+- Pandas
+- NumPy
+- Scikit-Learn
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
 
 ---
 
 
+## Future Improvements
+
+- Deploy the model using Streamlit.
+- Add XGBoost and LightGBM models.
+- Incorporate customer demographics.
+- Perform cohort analysis.
+- Build a dashboard for business users.
+
 ---
 
-## 📈 Future Work
-- Add deep learning models (RNNs/Transformers) for CLV prediction.  
-- Integrate demographic & behavioral features for richer profiling.  
-- Automate pipeline for real-time CLV updates.  
+## Conclusion
+
+Customer Lifetime Value prediction enables businesses to move beyond one-size-fits-all marketing and focus resources where they generate the highest return. By combining predictive modeling with customer segmentation, this project provides a framework for improving retention, maximizing revenue, and supporting long-term business growth.
 
 ---
-
-## ✍️ Author
-Project developed for **Customer Analytics & Forecasting** use case.  
-Feel free to contribute or suggest improvements via issues or pull requests.
-
-
-## 📂 Project Structure
